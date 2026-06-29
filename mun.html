@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cosmic Journey For Us</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #1b1145 0%, #05021a 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .space {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+        }
+        .space::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 
+                20vw 10vh #fff, 80vw 30vh #fff, 50vw 50vh #fff, 
+                15vw 70vh #fff, 85vw 85vh #fff, 35vw 25vh #fff,
+                75vw 60vh #ffffffa1, 45vw 80vh #ffffff9e;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .card {
+            background: rgba(15, 8, 42, 0.85);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 20px;
+            width: 85%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+            z-index: 10;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: #c7a4ff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(199, 164, 255, 0.5);
+        }
+        p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #e2d9f3;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="time"] {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #8a2be2;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .btn {
+            background: linear-gradient(45deg, #8a2be2, #4b0082);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            transition: transform 0.1s;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+
+        .final-letter {
+            text-align: left;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #ff1493;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .badge {
+            background: linear-gradient(45deg, #ff1493, #8a2be2);
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="space"></div>
+
+    <div class="card">
+        <!-- স্ক্রিন ১: প্রোপোজাল -->
+        <div id="screen1" class="screen active">
+            <p><i>"In this vast universe of billions of galaxies and countless stars, my gravity always pulls me toward you. Out of all the cosmic wonders, you are my favorite absolute reality."</i></p>
+            <h2>Mumu, will you meet me on the 3rd of July? I am eagerly waiting. And you?</h2>
+            <div class="btn-group">
+                <button class="btn" onclick="nextScreen(2)">Yes!</button>
+                <button class="btn" onclick="nextScreen(2)">Yes!!</button>
+            </div>
+        </div>
+
+        <!-- স্ক্রিন ২: স্থান নির্ধারণ -->
+        <div id="screen2" class="screen">
+            <h2>Our Next Cosmic Rendezvous</h2>
+            <p>Where in this beautiful planet shall our orbits cross this time?</p>
+            <input type="text" id="locationInput" placeholder="Enter the location...">
+            <div class="btn-group">
+                <button class="btn" onclick="saveLocation()">Next</button>
+            </div>
+        </div>
+
+        <!-- স্ক্রিন ৩: সময় নির্ধারণ -->
+        <div id="screen3" class="screen">
+            <h2>Perfect Alignment of Time</h2>
+            <p>At what exact moment shall the stars align for us?</p>
+            <input type="time" id="timeInput">
+            <div class="btn-group">
+                <button class="btn" onclick="saveTime()">Confirm</button>
+            </div>
+        </div>
+
+        <!-- স্ক্রিন ৪: ফাইনাল ইন্টারফেস -->
+        <div id="screen4" class="screen">
+            <h2>💫 Cosmic Manifestation Confirmed 💫</h2>
+            <div class="final-letter">
+                "My Dearest Mumu, thank you for letting our orbits collide once again. They say space is expanding, but my universe shrinks to just you when you look my way. Consider this space-time continuum officially glitched, because until July 3rd, my heart is running on a completely different gravity. You are the prettiest constellation I’ll ever chase, and I can't wait to star-gaze into your eyes."
+            </div>
+            <div class="badge" id="confirmationTicket">
+                Processing cosmic alignment...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let locationData = "";
+
+        function nextScreen(screenNum) {
+            // সব স্ক্রিন হাইড করা
+            document.getElementById('screen1').style.display = 'none';
+            document.getElementById('screen2').style.display = 'none';
+            document.getElementById('screen3').style.display = 'none';
+            document.getElementById('screen4').style.display = 'none';
+            
+            // নির্দিষ্ট স্ক্রিনটি শো করা
+            document.getElementById('screen' + screenNum).style.display = 'block';
+        }
+
+        function saveLocation() {
+            const loc = document.getElementById('locationInput').value.trim();
+            if(loc === "") {
+                alert("Please enter a beautiful place for our meeting!");
+                return;
+            }
+            locationData = loc;
+            nextScreen(3);
+        }
+
+        function saveTime() {
+            const timeValue = document.getElementById('timeInput').value;
+            if(timeValue === "") {
+                alert("Please select a perfect time!");
+                return;
+            }
+            
+            // সময় ফরম্যাট ঠিক করা
+            let timeSplit = timeValue.split(':');
+            let hours = parseInt(timeSplit[0]);
+            let minutes = timeSplit[1];
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            let formattedTime = hours + ':' + minutes + ' ' + ampm;
+
+            // ফাইনাল কসমিক টিকিট টেক্সট
+            const ticketText = `🌌 COSMIC DECREE SIGNED 🌌\nThis certifies that Mumu has officially acknowledged and authorized her 3rd cosmic alignment with Habib on July 3rd at ${formattedTime}, taking place at ${locationData}. 🚀✨`;
+            
+            document.getElementById('confirmationTicket').innerText = ticketText;
+            nextScreen(4);
+        }
+    </script>
+</body>
+</html>
