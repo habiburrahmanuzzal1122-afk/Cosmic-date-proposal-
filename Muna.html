@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Message for Muna 🌌</title>
+    <style>
+        :root {
+            --space-bg: #03030d;
+            --cosmic-purple: #6f42c1;
+            --cosmic-blue: #007bff;
+            --star-gold: #ffd700;
+            --text-light: #e0e0e9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--space-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #11143a 0%, #03030d 100%);
+        }
+
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            opacity: 0.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: rgba(15, 15, 35, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(111, 66, 193, 0.3);
+            z-index: 1;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--cosmic-purple), var(--cosmic-blue));
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.5);
+        }
+
+        /* Initial Hide States */
+        #result-step, #letter-step {
+            display: none;
+        }
+
+        .result-box h3 {
+            color: var(--star-gold);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .reason-text {
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .letter-box {
+            text-align: justify;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* Custom Scrollbar for Letter */
+        .letter-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter-box::-webkit-scrollbar-thumb {
+            background: var(--cosmic-purple);
+            border-radius: 10px;
+        }
+
+        .challenge-box {
+            margin-top: 25px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px dashed var(--star-gold);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .challenge-box h4 {
+            color: var(--star-gold);
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .challenge-item input {
+            margin-right: 12px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <!-- Step 1: Question and Options -->
+        <div id="quiz-step">
+            <h2>"Mumu, do you know how lonely I feel when you are not by my side?"</h2>
+            <div class="options-grid">
+                <button class="btn" onclick="showResult()">🌌 Lonely and dark like a Black Hole</button>
+                <button class="btn" onclick="showResult()">☄️ Empty like the infinite void of the universe</button>
+                <button class="btn" onclick="showResult()">⭐ Lightless like a dying star</button>
+                <button class="btn" onclick="showResult()">🚀 Disoriented like a comet knocked out of orbit</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Voyager-1 Result & Reason -->
+        <div id="result-step" class="result-box">
+            <h3>Your loneliness is exactly like "Voyager-1"!</h3>
+            <p class="reason-text">
+                <strong>Why Voyager-1?</strong><br>
+                Voyager-1 is the furthest man-made object from Earth, drifting all alone in the freezing, pitch-black silence of interstellar space. It is completely isolated, billions of miles away from home. When you are not around, my heart feels exactly like that. The whole universe seems to go completely silent and empty, where no light or comfort can reach me.
+            </p>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <p style="margin-bottom: 15px; color: #a5a5d9;">A cosmic greeting is waiting for you, Muna. ✨</p>
+                <button class="btn" onclick="openLetter()" style="background: linear-gradient(45deg, #ff416c, #ff4b2b);">🌅 Good Morning</button>
+            </div>
+        </div>
+
+        <!-- Step 3: The Letter & Today's Challenge -->
+        <div id="letter-step" class="morning-box">
+            <div class="letter-box">
+                <strong>Good Morning, my love Muna.</strong><br><br>
+                Yesterday was heavy for me. I felt completely drained, like my body and mind had nothing left to give. But even in that tiredness, I did my work the best way I could. And do you know why? Because you exist in my life.<br><br>
+                Psychology calls it <em>purposeful effort</em>. When someone becomes your safe place, your brain stops asking if you should keep going and starts telling you that you must. That someone is you. You are the quiet reason I never quit on myself, even on days when everything feels too much.<br><br>
+                Last night I know you slept late. I know your mind was full, and I know you missed me. Don’t pretend you didn’t. I felt it too. It was like a soft pull, like gravity reaching across the distance. Psychology calls this <em>attachment resonance</em>. When two people are deeply bonded, their emotions start to move together. Your stress, your silence, your longing… I felt the echo of it in me. Because you are not separate from me anymore. You are a part of me now.<br><br>
+                I also know your exams are going on. I know how loud that pressure can be. The fear of not being enough, the clock moving too fast, the pages that never seem to end. So let me be soft with you today. You are not just a student with a syllabus. You are a whole universe learning how to grow. A star does not rush to shine. It takes its time. It burns quietly until the whole sky changes. Be like that today. Breathe. Trust yourself. One question at a time.<br><br>
+                Let me tell you why I love you, without stopping, without holding back. You are my safe base. John Bowlby said we all look for one person who makes the world feel safe, and you are that for me. When my mind is noisy, thinking of you makes it quiet. When I am anxious, my body calms down just by imagining you. That is not just love. That is my nervous system choosing you as home.<br><br>
+                You are also my happiness. Martin Seligman said real happiness comes from pleasure, engagement, and meaning. You are all three for me. Talking to you is pleasure. Dreaming of a future with you is engagement. And loving you is the meaning I was missing all along. Without you, I would not even know what I was searching for.<br><br>
+                You are my reflection too. Neuroscience says we have mirror neurons that make us feel what the other person feels. When you smile, my day gets lighter. When you are stressed during exams, my chest feels tight. When you missed me last night, I ached as well. You did not just enter my life. You entered my biology.<br><br>
